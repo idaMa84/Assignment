@@ -2,6 +2,7 @@
 using Assignment.Models;
 using Assignment.Utility;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AssignmentWeb.Controllers
@@ -10,18 +11,33 @@ namespace AssignmentWeb.Controllers
     {
 
         private readonly ILikeRepository _likeRepo;
-        public LikeController(ILikeRepository likeRepo)
+        private readonly IHttpContextAccessor _contextAccessor;
+
+        public LikeController(ILikeRepository likeRepo, IHttpContextAccessor contextAccessor)
         {
             _likeRepo = likeRepo;
-        }
+            _contextAccessor = contextAccessor;
+        }      
 
         public IActionResult Index()
         {
-           // List<Like> list = new List<Like>();
-            //list.Add(new Like(1, "About", "Description"));
-            //list.Add(new Like(2, "About2", "Description2"));
-            //list.Add(new Like(3, "About3", "Description3"));
-            List<Like> list = _likeRepo.GetAll();
+            List<Like> list = new List<Like>();
+            string? accessToken=string.Empty;
+
+            if (String.IsNullOrEmpty(SD.UrllWithFacebookCode) && !String.IsNullOrEmpty(_contextAccessor.HttpContext.Session.GetString("urlWithFacebookCode")))        
+                SD.UrllWithFacebookCode = _contextAccessor.HttpContext.Session.GetString("urlWithFacebookCode");
+
+            if (String.IsNullOrEmpty(_contextAccessor.HttpContext.Session.GetString("AccessToken")))
+            {
+                accessToken = _likeRepo.GetAccessToken();
+                _contextAccessor.HttpContext.Session.SetString("AccessToken", accessToken);
+            }
+            else
+                accessToken = _contextAccessor.HttpContext.Session.GetString("AccessToken");
+
+            if (!String.IsNullOrEmpty(accessToken))
+                list = _likeRepo.GetAll(accessToken);
+           
             return View(list);
         }
 
@@ -41,27 +57,19 @@ namespace AssignmentWeb.Controllers
             {
                 //TODO: Save
             }
-
-            //  return RedirectToAction("Index");
+            
             return View();
         }
 
-        public IActionResult Edit(string? id)
-        // public IActionResult EditView(Like like)
-        {
-            //if (id == null || id=="")
+        public IActionResult Edit(string? id)     
+        {            
             if (String.IsNullOrEmpty(id))
             {
                 return NotFound();
             }
-
-            //List<Like> list = new List<Like>();
-            //list.Add(new Like(1, "About", "Description"));
-            //list.Add(new Like(2, "About2", "Description2"));
-            //list.Add(new Like(3, "About3", "Description3"));
-
-            //Like? like = list.FirstOrDefault(x => x.Id==id);
-            Like? like = _likeRepo.Get(id);
+                       
+            string accessToken = _contextAccessor.HttpContext.Session.GetString("AccessToken");
+            Like? like = _likeRepo.Get(id, accessToken);
 
             if (like == null)
             {
@@ -80,15 +88,13 @@ namespace AssignmentWeb.Controllers
             }
 
             if (ModelState.IsValid)
-            {
-                //TODO: Save
+            {               
                 _likeRepo.Update(obj);
                 TempData["success"] = $"Like Id {obj.Id} Updated successfully and Saved at {@SD.FolderPath}";
                 return RedirectToAction("Index");
             }
 
-            return View();
-            
+            return View();            
         }
     }
 }

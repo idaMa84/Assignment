@@ -10,9 +10,9 @@ namespace Assignment.DataAccess.Repository.IRepository
 {
     public interface ILikeRepository : IRepository<Like>
     {
-        void Update(Like obj);
-        void Save(Like obj);
-        public List<Like> GetAll();
-        public Like Get(string? id);
+        void Update(Like obj);    
+        public List<Like> GetAll(string AccessToken);
+        public Like Get(string? id, string accessToken  );
+        public string GetAccessToken();
     }
 }

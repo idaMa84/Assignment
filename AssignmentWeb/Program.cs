@@ -7,12 +7,13 @@ var configuration = builder.Configuration;
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ILikeRepository, LikeRepository>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout= TimeSpan.FromMinutes(60);
+});
 
-//builder.Services.AddAuthentication().AddFacebook(facebookOptions =>
-//{
-//    facebookOptions.AppId = configuration["Authentication:Facebook:AppId"];
-//    facebookOptions.AppSecret = configuration["Authentication:Facebook:AppSecret"];
-//});
 
 var app = builder.Build();
 
@@ -26,7 +27,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();
