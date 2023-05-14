@@ -11,41 +11,6 @@ namespace Assignment.DataAccess.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        //public T Get(Expression<Func<T, bool>> filter)
-        //{
-        //    //List<Like> list = new List<Like>();
-        //    //list.Add(new Like(1, "About", "Description"));
-        //    //list.Add(new Like(2, "About2", "Description2"));
-        //    //list.Add(new Like(3, "About3", "Description3"));
-
-        //    ////Like? like = list.FirstOrDefault(filter);
-        //    //return list;
-        //    throw new NotImplementedException();
-        //}
-
-        //public IEnumerable<T> GetAll()
-        //{
-        //    //List<Like> list = new List<Like>();
-        //    //list.Add(new Like(1, "About", "Description"));
-        //    //list.Add(new Like(2, "About2", "Description2"));
-        //    //list.Add(new Like(3, "About3", "Description3"));
-
-        //    ////Like? like = list.FirstOrDefault(filter);
-        //    //return list;
-
-        //    List<Like> list = new List<Like>();
-        //    list.Add(new Like(1, "About", "Description"));
-        //    list.Add(new Like(2, "About2", "Description2"));
-        //    list.Add(new Like(3, "About3", "Description3"));
-
-        //    //Like? like = list.FirstOrDefault(filter);
-        //    return <T> list;
-        //    //throw new NotImplementedException();
-        //}
-
-        public void Update(T entity)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -10,23 +10,22 @@ namespace Assignment.Models.AutoMapper
     public class AutoMapperConfig
     {
         public static Mapper InitializeAutomapper()
-        {
-            //Provide all the Mapping Configuration
+        {            
             var config = new MapperConfiguration(cfg =>
             {
                 
-                cfg.CreateMap<FacebookLikeResponse, List<Like>>()
-                              .ConvertUsing(source => source.data.Select(p => new Like
+                cfg.CreateMap<FacebookLikedPagesResponse, List<LikedPage>>()
+                              .ConvertUsing(source => source.Data.Select(p => new LikedPage
                               {
-                                  About = p.about == null ? "" : p.about,
-                                  Description = p.description == null ? "" : p.description,
-                                  Id = p.id == null ? "" : p.id
+                                  Id = p.Id == null ? "" : p.Id,
+                                  Name = p.Name == null ? "" : p.Name,
+                                  About = p.About == null ? "" : p.About,
+                                  Description = p.Description == null ? "" : p.Description                                  
+                                  
                               }).ToList()
-                              );
+                              );             
+            });            
 
-                //Any Other Mapping Configuration ....
-            });
-            //Create an Instance of Mapper and return that Instance
             var mapper = new Mapper(config);
             return mapper;
         }

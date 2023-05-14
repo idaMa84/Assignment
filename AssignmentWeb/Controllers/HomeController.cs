@@ -21,27 +21,61 @@ namespace AssignmentWeb.Controllers
 
         public IActionResult Index()
         {
-           
-            if (HttpContext.Request.GetDisplayUrl().Contains("code") && String.IsNullOrEmpty(_contextAccessor.HttpContext.Session.GetString("AccessToken")))
-            _contextAccessor.HttpContext.Session.SetString("urlWithFacebookCode", HttpContext.Request.GetDisplayUrl());
-          
-            return View();
+            try
+            {
+                //In case access token is not present we will store redirected url in order to extract CODE
+                if (HttpContext.Request.GetDisplayUrl().Contains("code") && String.IsNullOrEmpty(_contextAccessor.HttpContext.Session.GetString("AccessToken")))
+                    _contextAccessor.HttpContext.Session.SetString("UrlWithFacebookCode", HttpContext.Request.GetDisplayUrl());
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error", ex);
+                return BadRequest();
+            }
         }
 
-        public IActionResult Privacy()
+        public IActionResult AuthFacebook()
         {
-            return Redirect("https://www.facebook.com/v6.0/dialog/oauth?client_id=978379916908004&redirect_uri=https%3A%2F%2Flocalhost%3A7061%2FHome%2F&state=987654321"); 
+            try
+            {
+                //Redirect to Facebook in order to get CODE needed to obtain the access token
+                return Redirect("https://www.facebook.com/v6.0/dialog/oauth?client_id=978379916908004&redirect_uri=https%3A%2F%2Flocalhost%3A7061%2FHome%2F&state=987654321");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error", ex);
+                return BadRequest();
+            }
         }
 
-        public IActionResult Likes()
+        public IActionResult LikedPages()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error", ex);
+                return BadRequest();
+            }
         }
-         
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            try
+            {
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error", ex);
+                return BadRequest();
+            }
         }
+
     }
 }

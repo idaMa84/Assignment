@@ -3,10 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Assignment.Models
 {
-    public class Like
+    public class LikedPage
     {
         [DisplayName("Like Id")]
         public string Id { get; set; }
+        [Required]
+        [MaxLength(50)]
+        [DisplayName("Page Name")]
+        public string Name { get; set; }
         [Required]
         [MaxLength(100)]
         [DisplayName("About Page")]
@@ -15,15 +19,5 @@ namespace Assignment.Models
         [MaxLength(1000)]
         [DisplayName("Page Description")]
         public string Description { get; set; }
-
-        public Like()
-        { }
-        public Like(string id, string about, string description)
-        {
-            Id = id;
-            About = about;
-            Description = description;
-        }
-
     }
 }
