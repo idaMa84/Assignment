@@ -39,7 +39,9 @@ namespace AssignmentWeb.Controllers
             try
             {
                 //Redirect to Facebook in order to get CODE needed to obtain the access token
+                TempData["redirectionMessage"] = "Succesfuly redirected to Facebook";
                 return Redirect("https://www.facebook.com/v6.0/dialog/oauth?client_id=978379916908004&redirect_uri=https%3A%2F%2Flocalhost%3A7061%2FHome%2F&state=987654321");
+               
             }
             catch (Exception ex)
             {
