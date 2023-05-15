@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\LogIn\**" />
-    <Content Remove="Views\LogIn\**" />
-    <EmbeddedResource Remove="Views\LogIn\**" />
-    <None Remove="Views\LogIn\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Assignment.DataAccess\Assignment.DataAccess.csproj" />
     <ProjectReference Include="..\Assignment.Models\Assignment.Models.csproj" />
   </ItemGroup>
