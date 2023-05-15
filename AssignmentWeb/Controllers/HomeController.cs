@@ -11,8 +11,6 @@ namespace AssignmentWeb.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IHttpContextAccessor _contextAccessor;
 
-
-
         public HomeController(ILogger<HomeController> logger, IHttpContextAccessor contextAccessor)
         {
             _logger = logger;

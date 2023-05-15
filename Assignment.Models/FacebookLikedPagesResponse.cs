@@ -11,14 +11,12 @@ namespace Assignment.Models
     {
         public List<Data> Data { get; set; }
         public Paging Paging { get; set; }
-    }
-    
+    }    
     public class Cursors
     {
         public string Before { get; set; }
         public string After { get; set; }
     }
-
     public class Data
     {
         public string Id { get; set; }
@@ -27,7 +25,6 @@ namespace Assignment.Models
         public string Description { get; set; }
         
     }
-
     public class Paging
     {
         public Cursors Cursors { get; set; }

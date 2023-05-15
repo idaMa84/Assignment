@@ -11,7 +11,6 @@ namespace Assignment.DataAccess.Repository
     public class LikedPageRepository : Repository<LikedPage>, ILikedPageRepository
     {
         private readonly HttpClient _httpClient;
-
         public LikedPageRepository()
         {
             _httpClient = new HttpClient
@@ -142,7 +141,7 @@ namespace Assignment.DataAccess.Repository
             {
 
                 FacebookLikedPagesResponse myDeserializedClass = new FacebookLikedPagesResponse();
-                HttpResponseMessage response = _httpClinet.GetAsync($"{_httpClient.BaseAddress}me/likes?fields=id%2Cname%2Cabout%2Cdescription&access_token={accessToken}").GetAwaiter().GetResult(); ;
+                HttpResponseMessage response = _httpClinet.GetAsync($"{_httpClient.BaseAddress}me/likes?fields=id%2Cname%2Cabout%2Cdescription&limit=10&access_token={accessToken}").GetAwaiter().GetResult(); ;
 
                 if (response.IsSuccessStatusCode)
                 {

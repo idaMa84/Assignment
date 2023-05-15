@@ -3,6 +3,13 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h class="display-4">Welcome</h>  
+    <p></p>
+    <p></p>
 </div>
+
+<p>1) In order to call facebook&apos;s endpoint you should first click on<strong>&nbsp;FACEBOOK AUTHENTIFICATION</strong> and you will be redirected to facebook log in page (if you are not allready loged in in Facebook app) and during this process facebook&apos;s access token will be fatched.</p>
+<p>2) On <strong>LIKED PAGES</strong> click, new page will open and data from facebook endpoint https://graph.facebook.com/v16.0/me/likes?fields=id,name,about,description will be displayed (last 10 liked pages)</p>
+<p>3) From LIKED PAGES page you have an option to <strong>Edit&nbsp;</strong>specific record and by clicking <strong>UPDATE&nbsp;</strong>the json file will be saved in C:\UpdatedAssignmentData folder (folder with that name will be created automaticly during first update)</p>
+<p></p>
+<p><em>Note: If you want to change the path on whick documents will be saved you can do that by modifying FolderPath property inside class SD of Assignment.Utility project.</em></p>
