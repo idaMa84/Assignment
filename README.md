@@ -17,12 +17,8 @@ Solutin Assignment consists of four projects:
 - Toastr
 
 ## Features
-- LIKED PAGES 
-  On page load displays last 10 liked pages from Facebook for authentificated user (facebook endpoint describet at https://developers.facebook.com/docs/graph-api/reference/user/likes/)
-  There is an option to Edit specific record and by clicking UPDATE the json file will be saved in C:\UpdatedAssignmentData folder (folder with that name will be created automaticly during first update)
-  Note: If you want to change the path on whick documents will be saved you can do that by modifying FolderPath property inside class SD of Assignment.Utility project.
-- FACEBOOK AUTHENTIFICATION
-  Redirceting to Facebook Log In page if user is not loged in in order to retreive CODE which is needed for retreiveing access token
+- LIKED PAGES On page load, displays last 10 liked pages from Facebook for the authenticated user (the Facebook endpoint is described at https://developers.facebook.com/docs/graph-api/reference/user/likes/) There is an option to Edit  a specific record, and by clicking UPDATE the json file will be saved in C:\UpdatedAssignmentData folder (folder with that name will be created automatically during the first update) Note: If you want to change the path on which documents will be saved, you can do that by modifying the FolderPath property inside the class SD of the Assignment.Utility project.
+- FACEBOOK AUTHENTIFICATION If the user is not logged in, redirecting to the Facebook Log In page is required to retrieve the CODE, which is required to retrieve the access token.
 
 ## Setup
 - VISUAL STUDIO 2022
