@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignmentWeb", "AssignmentWeb\AssignmentWeb.csproj", "{73F7432B-F540-4ADC-93E9-A1D9221CEBDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssignmentWeb", "AssignmentWeb\AssignmentWeb.csproj", "{73F7432B-F540-4ADC-93E9-A1D9221CEBDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment.DataAccess", "Assignment.DataAccess\Assignment.DataAccess.csproj", "{7D024931-31DA-49BD-8757-AED69AE1E7E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.DataAccess", "Assignment.DataAccess\Assignment.DataAccess.csproj", "{7D024931-31DA-49BD-8757-AED69AE1E7E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment.Models", "Assignment.Models\Assignment.Models.csproj", "{0AE10B4C-8170-4511-8127-F3DB10FDFE4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.Models", "Assignment.Models\Assignment.Models.csproj", "{0AE10B4C-8170-4511-8127-F3DB10FDFE4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment.Utility", "Assignment.Utility\Assignment.Utility.csproj", "{D1C6DBDF-74F9-4308-9064-F965D28720D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment.Utility", "Assignment.Utility\Assignment.Utility.csproj", "{D1C6DBDF-74F9-4308-9064-F965D28720D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7795DE9-7B49-438D-85AC-8F17DF0CBC2F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\README.md = ..\..\..\Desktop\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
